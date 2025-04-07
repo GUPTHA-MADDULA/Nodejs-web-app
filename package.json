@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-web-app",
+  "version": "1.0.0",
+  "description": "Create a CI/CD Pipeline to streamline the workflow to deploy the application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GUPTHA-MADDULA/Nodejs-web-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GUPTHA-MADDULA/Nodejs-web-app/issues"
+  },
+  "homepage": "https://github.com/GUPTHA-MADDULA/Nodejs-web-app#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
