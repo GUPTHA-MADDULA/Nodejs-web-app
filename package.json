@@ -4,9 +4,8 @@
   "description": "Create a CI/CD Pipeline to streamline the workflow to deploy the application",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"No tests defined\" && exit 0"
-  },
+  "test": "jest"
+}
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GUPTHA-MADDULA/Nodejs-web-app.git"
