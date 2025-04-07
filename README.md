@@ -1,7 +1,3 @@
-Here’s the flow written in a proper **README.md** format for your repository:
-
----
-
 # Node.js Web Application with CI/CD Pipeline
 
 This repository contains a basic Node.js web application integrated with a CI/CD pipeline. The pipeline automates the process of testing, building, and deploying the application using GitHub Actions and Docker.
