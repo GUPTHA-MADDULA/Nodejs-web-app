@@ -81,7 +81,7 @@ Nodejs-web-app/
 │   └── app.test.js         # Test suite for the application
 ├── Dockerfile              # Docker configuration
 └── .github/workflows/
-    └── ci-cd.yml           # CI/CD pipeline definition
+    └── main.yml           # CI/CD pipeline definition
 ```
 
 ---
