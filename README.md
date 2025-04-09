@@ -69,12 +69,20 @@ The pipeline, defined in `.github/workflows/main.yml`, runs the following steps:
 ### **3. Deployment**
 
 Once the Docker image is successfully pushed to Docker Hub, it can be deployed on any server:
+
+![Docker Pushed](./pictures/Docker-image-push.png)
+
 ```bash
 docker pull <username>/nodejs-web-app:latest
 docker run -d -p 3000:3000 <username>/nodejs-web-app:latest # you can choose the lister port that you want ex: 8000,8080 
 ```
+### CI/CD Running Successfull 
+
+![Container is Running](./pictures/Nodejs-app-running.png)
+
 - The application will then be accessible at `http://<server-ip>:3000`.
 
+![CI/CD](./pictures/CICD%20success.png)
 ---
 
 ##  Operations Summary
