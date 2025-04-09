@@ -1,16 +1,20 @@
-# Use official Node.js image
+# Use official Node.js LTS image
 FROM node:16
 
-# Set working directory
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy files
+# Copy package.json and package-lock.json first (for Docker caching)
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy the rest of the app
+# Copy all application files
 COPY . .
 
-# Expose port and start app
+# Expose the app port
 EXPOSE 3000
-CMD ["npm", "start"]
+
+# Command to run the app using server.js
+CMD ["node", "server.js"]
