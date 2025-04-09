@@ -82,6 +82,7 @@ docker run -d -p 3000:3000 <username>/nodejs-web-app:latest # you can choose the
 
 - The application will then be accessible at `http://<server-ip>:3000`.
 
+
 ![CI/CD](./pictures/CICD%20success.png)
 ---
 
