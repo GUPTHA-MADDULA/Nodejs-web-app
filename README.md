@@ -23,37 +23,43 @@ This repository contains a basic Node.js web application integrated with a CI/CD
 
 ### **2. CI/CD Pipeline Overview**
 
-The pipeline, defined in `.github/workflows/ci-cd.yml`, runs the following steps:
+The pipeline, defined in `.github/workflows/main.yml`, runs the following steps:
 
 1. **Checkout Code:**
-   - Pulls the latest code from the repository.
+   - Pulls the latest code from the repository using `actions/checkout@v3`.
 
 2. **Environment Setup:**
-   - Sets up Node.js (version 16) to run the application.
+   - Sets up Node.js (version 16) using `actions/setup-node@v3`.
 
 3. **Dependency Installation:**
-   - Installs dependencies from `package.json` using:
+   - Installs project dependencies from `package.json` using:
      ```bash
      npm install
      ```
 
-4. **Unit Testing:**
-   - Runs tests using Jest to verify the application’s functionality.
+4. **Fix Jest Permissions (Optional):**
+   - Adds executable permission to Jest binary if needed:
+     ```bash
+     chmod +x ./node_modules/.bin/jest
+     ```
+
+5. **Unit Testing:**
+   - Runs Jest test suite to verify application functionality:
      ```bash
      npm test
      ```
 
-5. **Docker Build:**
-   - Builds a Docker image of the application.
+6. **Docker Build:**
+   - Builds a Docker image for the application:
      ```bash
      docker build -t <username>/nodejs-web-app:latest .
      ```
 
-6. **Docker Authentication:**
-   - Logs in to Docker Hub using credentials stored as GitHub secrets.
+7. **Docker Authentication:**
+   - Logs in to Docker Hub using GitHub secrets `DOCKER_USERNAME` and `DOCKER_PASSWORD`.
 
-7. **Docker Push:**
-   - Pushes the built Docker image to Docker Hub for deployment.
+8. **Docker Push:**
+   - Pushes the Docker image to Docker Hub:
      ```bash
      docker push <username>/nodejs-web-app:latest
      ```
@@ -62,12 +68,28 @@ The pipeline, defined in `.github/workflows/ci-cd.yml`, runs the following steps
 
 ### **3. Deployment**
 
-Once the Docker image is successfully pushed to Docker Hub, it can be deployed using:
+Once the Docker image is successfully pushed to Docker Hub, it can be deployed on any server:
 ```bash
 docker pull <username>/nodejs-web-app:latest
-docker run -d -p 3000:3000 <username>/nodejs-web-app:latest
+docker run -d -p 3000:3000 <username>/nodejs-web-app:latest # you can choose the lister port that you want ex: 8000,8080 
 ```
 - The application will then be accessible at `http://<server-ip>:3000`.
+
+---
+
+##  Operations Summary
+
+Here is a summary of the steps we performed During the CI/CD:
+
+1. Verified all files were in place: `index.js`, `app.test.js`, `package.json`, `Dockerfile`, and workflow YAML.
+2. Wrote and tested the Node.js application using Express.
+3. Created and tested `app.test.js` using Jest and Supertest.
+4. Fixed "Jest did not exit" warning by properly exporting `app` and avoiding unclosed resources.
+5. Built and ran Docker image locally to ensure app runs on port 3000.
+6. Created a GitHub Actions workflow (`main.yml`) for CI/CD.
+7. Installed required secrets (`DOCKER_USERNAME`, `DOCKER_PASSWORD`) in GitHub.
+8. Resolved Jest permission error using `chmod +x`.
+19. Successfully ran GitHub Actions workflow — code tested, Docker image built and pushed.
 
 ---
 
@@ -81,7 +103,7 @@ Nodejs-web-app/
 │   └── app.test.js         # Test suite for the application
 ├── Dockerfile              # Docker configuration
 └── .github/workflows/
-    └── main.yml           # CI/CD pipeline definition
+    └── main.yml            # CI/CD pipeline definition
 ```
 
 ---
@@ -91,3 +113,9 @@ Nodejs-web-app/
 - **Automated Testing:** Prevents bugs by ensuring each code change is verified.
 - **Simplified Deployment:** Containerization with Docker makes deployments consistent and portable.
 - **Continuous Integration:** Ensures the app is always in a deployable state.
+- **Real-time Validation:** Every code push triggers build and test pipeline ensuring reliability.
+
+---
+
+Feel free to contribute or clone and test the app on your own setup!
+
