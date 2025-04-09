@@ -79,17 +79,17 @@ docker run -d -p 3000:3000 <username>/nodejs-web-app:latest # you can choose the
 
 ##  Operations Summary
 
-Here is a summary of the steps we performed During the CI/CD:
+Here is a summary of the steps i performed During the CI/CD:
 
 1. Verified all files were in place: `index.js`, `app.test.js`, `package.json`, `Dockerfile`, and workflow YAML.
-2. Wrote and tested the Node.js application using Express.
+2. Writed and tested the Node.js application using Express.
 3. Created and tested `app.test.js` using Jest and Supertest.
 4. Fixed "Jest did not exit" warning by properly exporting `app` and avoiding unclosed resources.
-5. Built and ran Docker image locally to ensure app runs on port 3000.
+5. Built and run Docker image locally to ensure app runs on port 3000.
 6. Created a GitHub Actions workflow (`main.yml`) for CI/CD.
 7. Installed required secrets (`DOCKER_USERNAME`, `DOCKER_PASSWORD`) in GitHub.
 8. Resolved Jest permission error using `chmod +x`.
-19. Successfully ran GitHub Actions workflow — code tested, Docker image built and pushed.
+9. Successfully ran GitHub Actions workflow — code tested, Docker image built and pushed.
 
 ---
 
@@ -108,7 +108,7 @@ Nodejs-web-app/
 
 ---
 
-## Benefits of This Setup
+## Learnings from this
 
 - **Automated Testing:** Prevents bugs by ensuring each code change is verified.
 - **Simplified Deployment:** Containerization with Docker makes deployments consistent and portable.
@@ -116,6 +116,4 @@ Nodejs-web-app/
 - **Real-time Validation:** Every code push triggers build and test pipeline ensuring reliability.
 
 ---
-
-Feel free to contribute or clone and test the app on your own setup!
 
